@@ -7,7 +7,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.agendaapp_kotlin_jc.viewModels.LoginViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.NotasViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.RegisterViewModel
+import com.example.agendaapp_kotlin_jc.views.login.CheckSesionView
 import com.example.agendaapp_kotlin_jc.views.login.LoginView
+import com.example.agendaapp_kotlin_jc.views.notas.AddNoteView
 import com.example.agendaapp_kotlin_jc.views.notas.HomeView
 import com.example.agendaapp_kotlin_jc.views.register.RegisterView
 
@@ -19,7 +21,11 @@ fun NavManager(
 ){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "Login"){
+    NavHost(navController = navController, startDestination = "CheckSesion"){
+        composable("CheckSesion"){
+            CheckSesionView(navController)
+        }
+
         composable("Login"){
             LoginView(navController,loginVM)
 
@@ -29,6 +35,10 @@ fun NavManager(
         }
         composable("Home"){
             HomeView(navController, notesVM)
+        }
+
+        composable("AddNote"){
+            AddNoteView(navController, notesVM)
         }
     }
 }
