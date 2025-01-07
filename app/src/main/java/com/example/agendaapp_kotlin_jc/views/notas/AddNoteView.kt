@@ -1,5 +1,6 @@
 package com.example.agendaapp_kotlin_jc.views.notas
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -74,7 +75,12 @@ fun AddNoteView(navController: NavController,notesVM: NotasViewModel){
             )
             //Agregar nota a la base de datos
             Button(
-                onClick = {},
+                onClick = {
+                    notesVM.saveNotes(title,descriptions){
+                        Toast.makeText(context,"Nota guardada con exito",Toast.LENGTH_SHORT).show()
+                        navController.popBackStack()
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 20.dp , end = 20.dp)
