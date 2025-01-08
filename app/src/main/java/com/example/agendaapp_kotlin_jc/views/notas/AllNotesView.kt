@@ -52,7 +52,11 @@ fun AllNotesView(navController: NavController,notasVM:NotasViewModel){
                 items(note){item->
                     CardNote(title = item.title,
                         description = item.description,
-                        fecha = item.fecha) { }
+                        fecha = item.fecha) {
+                        //Enviaremos el id nota hacia la vista editnote view
+                        navController.navigate("EditNote/${item.idNote}")
+
+                    }
                 }
             }
         }

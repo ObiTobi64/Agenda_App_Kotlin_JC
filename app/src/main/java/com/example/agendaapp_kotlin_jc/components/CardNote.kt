@@ -53,7 +53,7 @@ fun CardNote(
             //Fecha de Registro de la nota
             Text(text = fecha, color = White)
             Spacer(modifier = Modifier.weight(1f))
-            IconButton(onClick={}) {
+            IconButton(onClick={onClick()}) {
                 Icon(imageVector = Icons.Default.Edit, contentDescription = "", tint = Color.White)
             }
         }
