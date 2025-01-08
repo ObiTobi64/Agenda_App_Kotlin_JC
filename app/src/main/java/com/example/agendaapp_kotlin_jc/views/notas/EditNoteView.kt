@@ -90,6 +90,17 @@ fun EditNoteView(
                 Text(text = "Actualizar nota")
             }
 
+            Button(onClick = {
+                notesVM.deleteNote(idNote){
+                    navController.popBackStack()
+                }
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp, end = 20.dp)) {
+                Text(text = "Eliminar nota")
+            }
+
         }
     }
 }

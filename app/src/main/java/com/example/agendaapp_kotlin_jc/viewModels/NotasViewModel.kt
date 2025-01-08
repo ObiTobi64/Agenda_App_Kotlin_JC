@@ -100,6 +100,24 @@ class NotasViewModel :ViewModel() {
         }
     }
 
+    fun deleteNote(idNote: String,onSuccess: () -> Unit){
+        viewModelScope.launch (Dispatchers.IO){
+            try {
+                firestore.collection("Notes").document(idNote)
+                    .delete()
+                    .addOnSuccessListener {
+                        onSuccess()
+                    }
+                    .addOnFailureListener {e->
+                        Log.d("Error al eliminar la nota","${e.message}")
+
+                    }
+            }catch (e:Exception){
+                Log.d("Error al eliminar la nota","${e.message}")
+            }
+        }
+    }
+
     fun getNotes(){
         val email = auth.currentUser?.email
         firestore.collection("Notes")
