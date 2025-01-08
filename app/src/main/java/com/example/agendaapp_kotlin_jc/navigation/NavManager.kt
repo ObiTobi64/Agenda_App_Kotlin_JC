@@ -10,6 +10,7 @@ import com.example.agendaapp_kotlin_jc.viewModels.RegisterViewModel
 import com.example.agendaapp_kotlin_jc.views.login.CheckSesionView
 import com.example.agendaapp_kotlin_jc.views.login.LoginView
 import com.example.agendaapp_kotlin_jc.views.notas.AddNoteView
+import com.example.agendaapp_kotlin_jc.views.notas.AllNotesView
 import com.example.agendaapp_kotlin_jc.views.notas.HomeView
 import com.example.agendaapp_kotlin_jc.views.register.RegisterView
 
@@ -39,6 +40,10 @@ fun NavManager(
 
         composable("AddNote"){
             AddNoteView(navController, notesVM)
+        }
+
+        composable("AllNotes"){
+            AllNotesView(navController,notesVM)
         }
     }
 }

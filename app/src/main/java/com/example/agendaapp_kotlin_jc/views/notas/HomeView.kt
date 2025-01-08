@@ -44,6 +44,8 @@ fun HomeView(navController: NavController, notesVM: NotasViewModel){
         Column (modifier = Modifier.padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally){
 
+
+//Agregar una nota
             Button(onClick = {
                 navController.navigate("AddNote")
             },
@@ -51,6 +53,15 @@ fun HomeView(navController: NavController, notesVM: NotasViewModel){
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)) {
                 Text(text = "Agregar Nota")
+            }
+//Ver mis notas
+            Button(onClick = {
+                navController.navigate("AllNotes")
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)) {
+                Text(text = "Ver mis notas")
             }
         }
     }
