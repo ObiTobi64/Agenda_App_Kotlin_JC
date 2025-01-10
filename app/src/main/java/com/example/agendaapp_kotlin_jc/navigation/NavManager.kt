@@ -11,6 +11,7 @@ import com.example.agendaapp_kotlin_jc.viewModels.LoginViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.NotasViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.RegisterViewModel
 import com.example.agendaapp_kotlin_jc.views.contacts.AddContactsView
+import com.example.agendaapp_kotlin_jc.views.contacts.AllContactsView
 import com.example.agendaapp_kotlin_jc.views.login.CheckSesionView
 import com.example.agendaapp_kotlin_jc.views.login.LoginView
 import com.example.agendaapp_kotlin_jc.views.notas.AddNoteView
@@ -61,6 +62,10 @@ fun NavManager(
 
         composable("AddContact"){
             AddContactsView(navController,contactVM)
+        }
+
+        composable("AllContacts"){
+            AllContactsView(navController,contactVM)
         }
     }
 }

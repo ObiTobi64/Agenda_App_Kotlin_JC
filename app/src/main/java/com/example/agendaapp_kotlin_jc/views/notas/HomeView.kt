@@ -87,7 +87,9 @@ fun HomeView(navController: NavController, notesVM: NotasViewModel){
                 Text(text = "Agregar contacto")
             }
             //Boton para visualizar todos los contactos
-            Button(onClick = {},
+            Button(onClick = {
+                navController.navigate("AllContacts")
+            },
                 modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)) {
                 Text(text = "Ver mis contactos")
             }

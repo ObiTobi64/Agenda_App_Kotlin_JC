@@ -5,6 +5,7 @@ data class ContactModel(
     val names:String="",
     val email:String="", //Correo del contacto
     val address:String="",
-    val phone:String=""
+    val phone:String="",
+    val idContact:String=""
 
     )
