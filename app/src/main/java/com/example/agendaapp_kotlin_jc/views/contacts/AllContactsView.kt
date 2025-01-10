@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.agendaapp_kotlin_jc.components.CardContact
 import com.example.agendaapp_kotlin_jc.viewModels.ContactsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,11 +53,11 @@ fun AllContactsView(navController: NavController, contactVM: ContactsViewModel){
 
             LazyColumn {
                 items(contact){ item ->
-
-                    Text(text = item.names)
-                    Text(text = item.email)
-                    Text(text = item.address)
-                    Text(text = item.phone)
+                    CardContact(
+                        names = item.names,
+                        email = item.email,
+                        address = item.address,
+                        phone = item.phone) { }
                 }
             }
         }
