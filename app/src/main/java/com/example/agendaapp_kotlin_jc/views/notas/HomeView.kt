@@ -1,8 +1,11 @@
 package com.example.agendaapp_kotlin_jc.views.notas
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material3.Button
@@ -18,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.agendaapp_kotlin_jc.R
 import com.example.agendaapp_kotlin_jc.viewModels.NotasViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,6 +48,11 @@ fun HomeView(navController: NavController, notesVM: NotasViewModel){
         Column (modifier = Modifier.padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally){
 
+            Image(
+                modifier = Modifier.height(100.dp).width(100.dp).padding(15.dp),
+                painter = painterResource(id = R.drawable.ico_nota),
+                contentDescription = "Icono de nota"
+            )
 
 //Agregar una nota
             Button(onClick = {
@@ -62,6 +71,25 @@ fun HomeView(navController: NavController, notesVM: NotasViewModel){
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)) {
                 Text(text = "Ver mis notas")
+            }
+
+            Image(
+                modifier = Modifier.height(100.dp).width(100.dp).padding(15.dp),
+                painter = painterResource(id = R.drawable.ico_contactos),
+                contentDescription = "Icono de contactos"
+            )
+
+            //Boton para agregar un contacto
+            Button(onClick = {
+                navController.navigate("AddContact")
+            },
+                modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)) {
+                Text(text = "Agregar contacto")
+            }
+            //Boton para visualizar todos los contactos
+            Button(onClick = {},
+                modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)) {
+                Text(text = "Ver mis contactos")
             }
         }
     }

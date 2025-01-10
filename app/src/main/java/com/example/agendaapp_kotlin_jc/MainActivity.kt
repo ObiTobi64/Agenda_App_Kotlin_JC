@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.agendaapp_kotlin_jc.navigation.NavManager
 import com.example.agendaapp_kotlin_jc.ui.theme.AgendaAppKotlinJCTheme
+import com.example.agendaapp_kotlin_jc.viewModels.ContactsViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.LoginViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.NotasViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.RegisterViewModel
@@ -25,6 +26,7 @@ import com.example.agendaapp_kotlin_jc.views.login.LoginView
         val loginVM : LoginViewModel by viewModels()
         val registerVM :  RegisterViewModel by viewModels()
         val notesVM : NotasViewModel by viewModels( )
+        val contactVM : ContactsViewModel by viewModels( )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +34,7 @@ import com.example.agendaapp_kotlin_jc.views.login.LoginView
         setContent {
             AgendaAppKotlinJCTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    NavManager(loginVM,registerVM,notesVM)
+                    NavManager(loginVM,registerVM,notesVM,contactVM)
                 }
             }
         }

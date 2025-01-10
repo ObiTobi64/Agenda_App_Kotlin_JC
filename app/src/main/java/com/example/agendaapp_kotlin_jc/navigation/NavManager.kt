@@ -6,9 +6,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.agendaapp_kotlin_jc.viewModels.ContactsViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.LoginViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.NotasViewModel
 import com.example.agendaapp_kotlin_jc.viewModels.RegisterViewModel
+import com.example.agendaapp_kotlin_jc.views.contacts.AddContactsView
 import com.example.agendaapp_kotlin_jc.views.login.CheckSesionView
 import com.example.agendaapp_kotlin_jc.views.login.LoginView
 import com.example.agendaapp_kotlin_jc.views.notas.AddNoteView
@@ -21,7 +23,8 @@ import com.example.agendaapp_kotlin_jc.views.register.RegisterView
 fun NavManager(
     loginVM: LoginViewModel,
     registerVM : RegisterViewModel,
-    notesVM : NotasViewModel
+    notesVM : NotasViewModel,
+    contactVM :ContactsViewModel
 ){
     val navController = rememberNavController()
 
@@ -54,6 +57,10 @@ fun NavManager(
         )){
             val idNote = it.arguments?.getString("idNote")?:""
             EditNoteView(navController,notesVM,idNote)
+        }
+
+        composable("AddContact"){
+            AddContactsView(navController,contactVM)
         }
     }
 }
