@@ -111,13 +111,16 @@ fun EditContactView(navController: NavController, contactVM: ContactsViewModel, 
             //Boton para editar un contacto
             Button(
                 onClick = {
+                    contactVM.editContact(idContact){
+                        navController.popBackStack()
+                    }
                 },
 
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)
             ) {
-                Text(text = "Agregar Contacto")
+                Text(text = "Actualizar Contacto")
             }
         }
     }
