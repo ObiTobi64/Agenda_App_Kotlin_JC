@@ -57,7 +57,9 @@ fun AllContactsView(navController: NavController, contactVM: ContactsViewModel){
                         names = item.names,
                         email = item.email,
                         address = item.address,
-                        phone = item.phone) { }
+                        phone = item.phone) {
+                        navController.navigate("EditContact/${item.idContact}")
+                    }
                 }
             }
         }

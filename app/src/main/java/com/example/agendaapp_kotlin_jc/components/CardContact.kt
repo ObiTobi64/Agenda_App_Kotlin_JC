@@ -67,7 +67,7 @@ fun CardContact(
             //Phone
             Text(text = "Teléfono: $phone", color = White, modifier = Modifier.fillMaxWidth())
             Spacer(modifier = Modifier.weight(1f))
-            IconButton(onClick={}) {
+            IconButton(onClick={onClick()}) {
                 Icon(
                     imageVector = Icons.Default.Edit,
                     contentDescription = "Editar Contacto",
