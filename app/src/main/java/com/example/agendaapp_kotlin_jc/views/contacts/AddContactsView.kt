@@ -117,16 +117,19 @@ fun AddContactsView(navController: NavController,contactsViewModel: ContactsView
                 //Boton para agregar un contacto
                 Button(
                     onClick = {
+                        if (names.isNotEmpty()&&email.isNotEmpty()&&address.isNotEmpty()&&phone.isNotEmpty()){
+                            contactsViewModel.saveContact(
+                                names,email,address,phone
+                            ){
 
-                        contactsViewModel.saveContact(
-                            names,email,address,phone
-                        ){
-
-                            //Se realizo el registro
-                            navController.popBackStack()
-                            Toast.makeText(context,
-                                "Contacto guardado",
-                                Toast.LENGTH_SHORT).show()
+                                //Se realizo el registro
+                                navController.popBackStack()
+                                Toast.makeText(context,
+                                    "Contacto guardado",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+                        }else{
+                            Toast.makeText(context,"Por favor llene todos los campos",Toast.LENGTH_SHORT).show()
                         }
                     },
 

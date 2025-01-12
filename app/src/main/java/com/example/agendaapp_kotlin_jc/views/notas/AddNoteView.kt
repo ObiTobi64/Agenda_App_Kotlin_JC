@@ -77,9 +77,13 @@ fun AddNoteView(navController: NavController,notesVM: NotasViewModel){
             //Agregar nota a la base de datos
             Button(
                 onClick = {
-                    notesVM.saveNotes(title,descriptions){
-                        Toast.makeText(context,"Nota guardada con exito",Toast.LENGTH_SHORT).show()
-                        navController.popBackStack()
+                    if(title.isNotEmpty()&&descriptions.isNotEmpty()){
+                        notesVM.saveNotes(title,descriptions){
+                            Toast.makeText(context,"Nota guardada con exito",Toast.LENGTH_SHORT).show()
+                            navController.popBackStack()
+                        }
+                    }else{
+                        Toast.makeText(context,"Por favor Llene todos los campos",Toast.LENGTH_SHORT).show()
                     }
                 },
                 modifier = Modifier
