@@ -134,4 +134,21 @@ class ContactsViewModel :ViewModel(){
         }
 
     }
+
+    fun deleteContact(idContact: String,onSuccess: () -> Unit){
+        viewModelScope.launch (Dispatchers.IO){
+            try {
+                firestore.collection("Contacts").document(idContact)
+                    .delete()
+                    .addOnSuccessListener {
+                        onSuccess()
+                    }
+                    .addOnFailureListener {e->
+                        Log.d("Error","${e.message}")
+                    }
+            }catch (e:Exception){
+                Log.d("Error","${e.message}")
+            }
+        }
+    }
 }

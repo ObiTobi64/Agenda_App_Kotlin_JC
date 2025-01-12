@@ -1,5 +1,7 @@
 package com.example.agendaapp_kotlin_jc.views.contacts
 
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -46,7 +48,7 @@ fun EditContactView(navController: NavController, contactVM: ContactsViewModel, 
     val state = contactVM.state
 
     Scaffold (topBar = {
-        TopAppBar(title = { Text(text = "Editar contacto") },
+        TopAppBar(title = { Text(text = "Información del contacto") },
             navigationIcon = {
                 IconButton(onClick = {
                     navController.popBackStack()
@@ -113,6 +115,7 @@ fun EditContactView(navController: NavController, contactVM: ContactsViewModel, 
                 onClick = {
                     contactVM.editContact(idContact){
                         navController.popBackStack()
+                        Toast.makeText(context,"Contacto Actualizado",Toast.LENGTH_SHORT).show()
                     }
                 },
 
@@ -121,6 +124,31 @@ fun EditContactView(navController: NavController, contactVM: ContactsViewModel, 
                     .padding(start = 20.dp, end = 20.dp)
             ) {
                 Text(text = "Actualizar Contacto")
+            }
+
+            Button(onClick = {
+                contactVM.deleteContact(idContact){
+                    navController.popBackStack()
+                    Toast.makeText(context,"Contacto Eliminado",Toast.LENGTH_SHORT).show()
+
+                }
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)) {
+                Text(text = "Eliminar Contacto")
+            }
+
+            Button(onClick = {
+                var phoneInt = state.phone.toInt()
+                val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneInt"))
+                context.startActivity(intent)
+
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)) {
+                Text(text = "Realizar Llamada")
             }
         }
     }
