@@ -138,7 +138,7 @@ fun EditContactView(navController: NavController, contactVM: ContactsViewModel, 
                     .padding(start = 20.dp, end = 20.dp)) {
                 Text(text = "Eliminar Contacto")
             }
-
+            //Realizar Llamada
             Button(onClick = {
                 var phoneInt = state.phone.toInt()
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneInt"))
@@ -149,6 +149,20 @@ fun EditContactView(navController: NavController, contactVM: ContactsViewModel, 
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)) {
                 Text(text = "Realizar Llamada")
+            }
+            //Enviar mensaje de texto
+            Button(onClick = {
+                var phoneInt = state.phone.toInt()
+                val intent = Intent(Intent.ACTION_SENDTO)
+                intent.data = Uri.parse("smsto:$phoneInt")
+                intent.putExtra("sms_body", "")
+                context.startActivity(intent)
+
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)) {
+                Text(text = "Enviar SMS")
             }
         }
     }
